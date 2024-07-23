@@ -1,87 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-23T18:23:51.052044" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-23T19:21:33.869502" rpa="false" schemaversion="5">
 <suite id="s1" name="Itqs-Robot" source="C:\Users\rebec\Documents\projetos github\itqs-robot">
-<suite id="s1-s1" name="Testando" source="C:\Users\rebec\Documents\projetos github\itqs-robot\testando.robot">
-<test id="s1-s1-t1" name="Calculadora Simples" line="9">
+<suite id="s1-s1" name="Exercicios Rebeca" source="C:\Users\rebec\Documents\projetos github\itqs-robot\exercicios_rebeca.robot">
+<test id="s1-s1-t1" name="Exercicio16" line="153">
 <kw name="Get Value From User" owner="Dialogs">
-<msg time="2024-07-23T18:23:57.482544" level="INFO">${NUM1} = 45</msg>
-<var>${NUM1}</var>
-<arg>Digite o primeiro número</arg>
+<msg time="2024-07-23T19:21:36.596287" level="INFO">${NOME} = reb</msg>
+<var>${NOME}</var>
+<arg>Digite seu nome</arg>
 <doc>Pauses execution and asks user to input a value.</doc>
-<status status="PASS" start="2024-07-23T18:23:51.104155" elapsed="6.378389"/>
+<status status="PASS" start="2024-07-23T19:21:33.918364" elapsed="2.677923"/>
 </kw>
 <kw name="Get Value From User" owner="Dialogs">
-<msg time="2024-07-23T18:24:00.614954" level="INFO">${NUM2} = 12</msg>
-<var>${NUM2}</var>
-<arg>Digite o segundo número</arg>
+<msg time="2024-07-23T19:21:38.446035" level="INFO">${IDADE} = 30</msg>
+<var>${IDADE}</var>
+<arg>Digite sua idade</arg>
 <doc>Pauses execution and asks user to input a value.</doc>
-<status status="PASS" start="2024-07-23T18:23:57.483548" elapsed="3.132516"/>
+<status status="PASS" start="2024-07-23T19:21:36.599802" elapsed="1.846233"/>
 </kw>
-<kw name="Get Selection From User" owner="Dialogs">
-<msg time="2024-07-23T18:24:10.316452" level="INFO">${OPERACAO} = +</msg>
-<var>${OPERACAO}</var>
-<arg>Selecione a operação</arg>
-<arg>+</arg>
-<arg>-</arg>
-<arg>*</arg>
-<arg>/</arg>
-<doc>Pauses execution and asks user to select a value.</doc>
-<status status="PASS" start="2024-07-23T18:24:00.616388" elapsed="9.700064"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2024-07-23T18:24:10.318585" level="INFO">${NUM1} = 45.0</msg>
-<var>${NUM1}</var>
-<arg>float(${NUM1})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2024-07-23T18:24:10.317490" elapsed="0.002039"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2024-07-23T18:24:10.321518" level="INFO">${NUM2} = 12.0</msg>
-<var>${NUM2}</var>
-<arg>float(${NUM2})</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2024-07-23T18:24:10.320461" elapsed="0.001057"/>
-</kw>
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Evaluate" owner="BuiltIn">
-<arg>${NUM1} + ${NUM2}</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2024-07-23T18:24:10.324463" elapsed="0.000000"/>
-</kw>
-<msg time="2024-07-23T18:24:10.325541" level="INFO">${resultado} = 57.0</msg>
-<var>${resultado}</var>
-<arg>'${OPERACAO}' == '+'</arg>
-<arg>Evaluate</arg>
-<arg>${NUM1} + ${NUM2}</arg>
-<arg>ELSE IF</arg>
-<arg>'${OPERACAO}' == '-'</arg>
-<arg>Evaluate</arg>
-<arg>${NUM1} - ${NUM2}</arg>
-<arg>ELSE IF</arg>
-<arg>'${OPERACAO}' == '*'</arg>
-<arg>Evaluate</arg>
-<arg>${NUM1} * ${NUM2}</arg>
-<arg>ELSE IF</arg>
-<arg>'${OPERACAO}' == '/'</arg>
-<arg>Evaluate</arg>
-<arg>${NUM2} != 0 and ${NUM1} / ${NUM2}</arg>
-<arg>ELSE</arg>
-<arg>Log</arg>
-<arg>Operação inválida</arg>
-<arg>WARN</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2024-07-23T18:24:10.322468" elapsed="0.003073"/>
-</kw>
+<if>
+<branch type="IF" condition="${IDADE} &lt; 10">
 <kw name="Log To Console" owner="BuiltIn">
-<arg>O resultado da operação ${OPERACAO} entre ${NUM1} e ${NUM2} é ${resultado}</arg>
+<arg>\nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Escolinha</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2024-07-23T18:24:10.326503" elapsed="0.001054"/>
+<status status="NOT RUN" start="2024-07-23T19:21:38.459296" elapsed="0.000541"/>
 </kw>
-<status status="PASS" start="2024-07-23T18:23:51.103156" elapsed="19.225362"/>
+<status status="NOT RUN" start="2024-07-23T19:21:38.458201" elapsed="0.001636"/>
+</branch>
+<branch type="ELSE IF" condition="${IDADE} &lt; 18">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Categorias de base</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-07-23T19:21:38.460933" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-23T19:21:38.459837" elapsed="0.001096"/>
+</branch>
+<branch type="ELSE IF" condition="${IDADE} &lt; 41">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Profissional</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-23T19:21:38.461666" elapsed="0.011564"/>
+</kw>
+<status status="PASS" start="2024-07-23T19:21:38.460933" elapsed="0.012297"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Master</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-07-23T19:21:38.473230" elapsed="0.002094"/>
+</kw>
+<status status="NOT RUN" start="2024-07-23T19:21:38.473230" elapsed="0.002094"/>
+</branch>
+<status status="PASS" start="2024-07-23T19:21:38.458201" elapsed="0.017442"/>
+</if>
+<status status="PASS" start="2024-07-23T19:21:33.918364" elapsed="4.557279"/>
 </test>
-<status status="PASS" start="2024-07-23T18:23:51.075893" elapsed="19.255590"/>
+<status status="PASS" start="2024-07-23T19:21:33.894060" elapsed="4.581583"/>
 </suite>
-<status status="PASS" start="2024-07-23T18:23:51.057158" elapsed="19.278313"/>
+<status status="PASS" start="2024-07-23T19:21:33.869502" elapsed="4.618192"/>
 </suite>
 <statistics>
 <total>
@@ -91,7 +66,7 @@
 </tag>
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="Itqs-Robot">Itqs-Robot</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Testando">Itqs-Robot.Testando</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Exercicios Rebeca">Itqs-Robot.Exercicios Rebeca</stat>
 </suite>
 </statistics>
 <errors>

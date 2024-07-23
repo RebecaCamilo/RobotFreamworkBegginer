@@ -1,4 +1,7 @@
 # Exercicios sobre robotframework | aula 23.07.2024
+*** Settings ***
+Library           Dialogs
+
 *** Variables ***
 #Exercicio1
 ${N1}    ${5}
@@ -44,6 +47,9 @@ ${NOTA_4}    ${7.5}
 #Exercicio13
 ${NUMERO1}    ${4}
 ${NUMERO2}    ${6}
+#Exercicio14
+${NUMERO_1}    ${1.0}
+${NUMERO_2}    ${1.0}
 
 *** Test Cases ***
 Exercicio1
@@ -116,4 +122,43 @@ Exercicio13
         Log To Console    \nO número ${NUMERO1} é maior que o número ${NUMERO2}
     ELSE
         Log To Console    \nO número ${NUMERO2} é maior que o número ${NUMERO1}
+    END
+
+Exercicio14
+    ${NUMERO_1}    Get Value From User    Digite o primeiro número
+    ${NUMERO_2}    Get Value From User    Digite o segundo número
+    ${operacao}    Get Selection From User    Selecione a operação desejada    Adição [+]    Subtração [-]    Multiplicação [*]    Divisão [/]
+    IF    $operacao == "Adição [+]"
+        Log To Console    \n${NUMERO_1} + ${NUMERO_2} = ${${NUMERO_1} + ${NUMERO_2}}
+    ELSE IF    $operacao == "Subtração [-]"
+        Log To Console    \n${NUMERO_1} - ${NUMERO_2} = ${${NUMERO_1} - ${NUMERO_2}}
+    ELSE IF    $operacao == "Multiplicação [*]"
+        Log To Console    \n${NUMERO_1} * ${NUMERO_2} = ${${NUMERO_1} * ${NUMERO_2}}
+    ELSE
+        Log To Console    \n${NUMERO_1} / ${NUMERO_2} = ${${NUMERO_1} / ${NUMERO_2}}
+    END
+
+Exercicio15
+    ${IDADE}    Get Value From User    Digite sua idade
+    ${NOME}    Get Value From User    Digite seu nome
+    ${CONDICAO_ESPECIAL}    Get Selection From User    Possui condição especial?    Sim    Não
+    IF    ${IDADE} > 65
+        Log To Console    \nUse a fila preferencial
+    ELSE IF    $CONDICAO_ESPECIAL == "Sim"
+        Log To Console    \nUse a fila preferencial
+    ELSE
+        Log To Console    \nNÃO use a fila preferencial
+    END
+
+Exercicio16
+    ${NOME}    Get Value From User    Digite seu nome
+    ${IDADE}    Get Value From User    Digite sua idade
+    IF    ${IDADE} < 10
+        Log To Console    \nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Escolinha
+    ELSE IF    ${IDADE} < 18
+        Log To Console    \nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Categorias de base
+    ELSE IF    ${IDADE} < 41
+        Log To Console    \nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Profissional
+    ELSE
+        Log To Console    \nNome: ${NOME} \nIdade: ${IDADE} \nCategoria: Master
     END
