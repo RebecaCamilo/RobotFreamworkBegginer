@@ -47,6 +47,13 @@ PATCH /${endpoint}/${id}
     ${response}    PATCH On Session    alias=${SESSION_NAME}    url=/${endpoint}/${id}   json=${payload}    headers=${headers}    expected_status=${expected_status}
     RETURN    ${response}
 
+DELETE /${endpoint}/${id}
+    [Arguments]    ${expected_status}
+    ${token}    Get Token
+    ${headers}    Create Dictionary    Cookie=token\=${token}
+    ${response}    Delete On Session    alias=${SESSION_NAME}    url=/${endpoint}/${id}   headers=${headers}    expected_status=${expected_status}
+    RETURN    ${response}
+
 Get Token
     ${response}    POST /auth    PostAuthValid.json    200
     ${token}    Set Variable    ${response.json()}[token]
@@ -109,3 +116,13 @@ TC7: editar reserva
 
     ${newResponse}    GET /booking/${bookingId}    200
     Dictionaries Should Be Equal    ${newResponse.json()}    ${response.json()}
+
+TC8: deletar reserva
+    ${bookingId}    Select Randon BookingId From Booking List
+
+    DELETE /booking/${bookingId}    201
+
+    GET /booking/${bookingId}    404
+
+    ${response}    GET /booking    200
+    Should Not Have Value In Json    ${response.json()}    json_path=$[?(@.bookingid == ${bookingId})].bookingid
